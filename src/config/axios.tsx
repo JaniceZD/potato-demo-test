@@ -1,4 +1,5 @@
 import axios from "axios"
+import history from './history'
 
 const appID = '7wfWsfscoq44dWM2dCcQmdV8'
 const appSecret = 'x8jE2TC8GmbbZ7Hwb8W6vNGw'
@@ -37,6 +38,9 @@ instance.interceptors.response.use(function (response) {
 }, function (error) {
   // Any status codes that falls outside the range of 2xx cause this function to trigger
   // Do something with response error
+  if (error.response.status === 401) {
+    history.push('/login')
+  }
   return Promise.reject(error);
 });
 
