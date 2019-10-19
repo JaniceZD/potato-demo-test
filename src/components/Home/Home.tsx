@@ -6,7 +6,7 @@ interface IIndexState {
   user: any
 }
 
-class Index extends React.Component<any, IIndexState> {
+class Home extends React.Component<any, IIndexState> {
   constructor(props: any) {
     super(props)
     this.state = {
@@ -18,15 +18,11 @@ class Index extends React.Component<any, IIndexState> {
     await this.getMe()
   }
   getMe = async () => {
-    try {
-      const response = await axios.get('me');
-      console.log(response);
-      this.setState({
-        user: response.data
-      })
-    } catch (error) {
-      console.error(error);
-    }
+    const response = await axios.get('me');
+    console.log(response);
+    this.setState({
+      user: response.data
+    })
   }
   logout = () => {
     localStorage.setItem('x-token', '')
@@ -45,4 +41,4 @@ class Index extends React.Component<any, IIndexState> {
   }
 }
 
-export default Index
+export default Home
