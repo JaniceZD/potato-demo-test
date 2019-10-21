@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import TodoInput from './TodoInput'
+import TodoItem from './TodoItem'
 import { initTodos, updateTodo } from '../../redux/actions'
 import axios from '../../config/axios'
 
@@ -43,6 +44,18 @@ class Todos extends React.Component<any> {
     return (
       <div className="Todos" >
         <TodoInput />
+        <div className="todoLists">
+          {
+            this.unCompletedTodos.map((t: any) =>
+              <TodoItem key={t.id} {...t} />
+            )
+          }
+          {
+            this.completedTodos.map((t: any) =>
+              <TodoItem key={t.id} {...t} />
+            )
+          }
+        </div>
       </div>
     )
   }

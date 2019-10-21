@@ -7,25 +7,21 @@ const todos = (state: any[] = [], action: any) => {
     case INIT_TODOS:
       return [...action.payload]
     case UPDATE_TODO:
-      state.map((t) => {
+      return state.map((t) => {
         if (t.id === action.payload.id) {
           return action.payload
         } else {
           return t
         }
       });
-      break;
     case EDIT_TODO:
-      state.forEach((t) => {
-        if (t.id === action.payload.id) {
-          t.editing = true
-          return t
+      return state.map((t) => {
+        if (t.id === action.payload) {
+          return { ...t, ...{ editing: true } }
         } else {
-          t.editing = false
-          return t
+          return { ...t, ...{ editing: false } }
         }
       });
-      break;
     default:
       return state
   }
