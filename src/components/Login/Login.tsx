@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import { Input, Icon, Tooltip, Button } from 'antd';
+import { Input, Icon, Button } from 'antd';
 import './Login.scss'
 import axios from '../../config/axios'
 
@@ -32,8 +32,8 @@ class Login extends React.Component<any, ILoginState> {
         account,
         password
       });
-      this.props.history.push('/')
       console.log(response);
+      this.props.history.push('/')
     } catch (error) {
       console.error(error);
     }
@@ -47,11 +47,6 @@ class Login extends React.Component<any, ILoginState> {
         <Input placeholder="请输入用户名"
           value={account}
           prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
-          suffix={
-            <Tooltip title="Extra information">
-              <Icon type="info-circle" style={{ color: 'rgba(0,0,0,.45)' }} />
-            </Tooltip>
-          }
           allowClear
           onChange={(e) => this.onChange("account", e.target.value)}
         />

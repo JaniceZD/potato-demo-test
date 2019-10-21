@@ -13,7 +13,8 @@ const todos = (state: any[] = [], action: any) => {
         } else {
           return t
         }
-      })
+      });
+      break;
     case EDIT_TODO:
       state.forEach((t) => {
         if (t.id === action.payload.id) {
@@ -23,7 +24,8 @@ const todos = (state: any[] = [], action: any) => {
           t.editing = false
           return t
         }
-      })
+      });
+      break;
     default:
       return state
   }
