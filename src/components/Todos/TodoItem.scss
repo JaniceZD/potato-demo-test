@@ -1,0 +1,41 @@
+.TodoItem {
+  border-top: 1px solid #dddddd;
+  padding: 5px 3px;
+  display: flex;
+  align-items: center;
+  color: #222;
+  width: 100%;
+  &:hover{background: #f9f9f9}
+  &.editing{background: #fff3d2}
+  &.completed{
+    >.text{
+      text-decoration: line-through;
+      color: #a9a9a9;
+    }
+  }
+  > .checkbox {
+    padding: 2px 3px;
+    border-radius: 100%;
+  }
+  >.editing, >.text{
+    flex: 1;
+    font-size: .9rem;
+  }
+  > .editing {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    >input {
+      border: 0;
+      padding: 0;
+      outline: none;
+      background: transparent;
+      width: 85%;
+    }
+    >.iconWrapper >.anticon{
+      margin: 0 5px;
+      color: #a9a9a9;
+      cursor: pointer;
+    }
+  }
+}

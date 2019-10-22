@@ -4,6 +4,7 @@ import { updateTodo, editTodo } from '../../redux/actions'
 import classNames from 'classnames'
 import axios from '../../config/axios'
 import { Checkbox, Icon } from 'antd';
+import './TodoItem.scss'
 
 interface ITodoItemProps {
   id: number;
@@ -70,6 +71,7 @@ class TodoItem extends React.Component<ITodoItemProps, ITodoItemState> {
     return (
       <div className={todoItemClass} id="TodoItem">
         <Checkbox
+          className="checkbox"
           checked={this.props.completed}
           onChange={e => this.updateTodo({ completed: e.target.checked })} />
         {this.props.editing ? Editing : Text}

@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Input, Icon } from 'antd';
 import axios from '../../config/axios'
 import { addTodo } from '../../redux/actions'
-
+import './TodoInput.scss'
 
 interface ITodoInputProps {
   addTodo: (playload: any) => any;
@@ -43,7 +43,7 @@ class TodoInput extends React.Component<ITodoInputProps, ITodoInputState> {
 
   render() {
     const { description } = this.state
-    const suffix = description ? <Icon type="enter" onClick={this.postTodo}/> : <span />;
+    const suffix = description ? <Icon type="enter" onClick={this.postTodo} /> : <span />;
     return (
       <div className="TodoInput">
         <Input placeholder="添加新任务"

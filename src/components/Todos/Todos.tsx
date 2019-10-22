@@ -4,6 +4,7 @@ import TodoInput from './TodoInput'
 import TodoItem from './TodoItem'
 import { initTodos, updateTodo } from '../../redux/actions'
 import axios from '../../config/axios'
+import './Todos.scss'
 
 class Todos extends React.Component<any> {
   constructor(props: any) {
