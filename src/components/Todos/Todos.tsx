@@ -2,8 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux'
 import TodoInput from './TodoInput'
 import TodoItem from './TodoItem'
-import { initTodos, updateTodo } from '../../redux/actions'
-import axios from '../../config/axios'
+import { updateTodo } from '../../redux/actions/todos'
 import './Todos.scss'
 
 class Todos extends React.Component<any> {
@@ -22,23 +21,6 @@ class Todos extends React.Component<any> {
 
   get completedTodos() {
     return this.unDeletedTodos.filter((t: any) => t.completed)
-  }
-
-  componentDidMount() {
-    this.getTodos()
-  }
-
-  getTodos = async () => {
-    try {
-      const response = await axios.get('todos')  //response 是对象，包括 data: {resources: Array(1)}
-      const todos = response.data.resources.map((t: any) => ({
-        ...t, ...{ editing: false }
-      }))  //todos 是待办事项列表
-      console.log(todos)
-      this.props.initTodos(todos) //返回的是{type: "INIT_TODOS", payload: Array(1)}
-    } catch (e) {
-      throw new Error(e)
-    }
   }
 
   render() {
@@ -68,7 +50,6 @@ const mapStateToProps = (state: any, ownProps: any) => ({
 })
 
 const mapDispatchToProps = {
-  initTodos,
   updateTodo
 }
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux'
 import { Input, Icon } from 'antd';
 import axios from '../../config/axios'
-import { addTodo } from '../../redux/actions'
+import { addTodo } from '../../redux/actions/todos'
 import './TodoInput.scss'
 
 interface ITodoInputProps {
