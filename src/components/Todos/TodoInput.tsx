@@ -47,6 +47,7 @@ class TodoInput extends React.Component<ITodoInputProps, ITodoInputState> {
     return (
       <div className="TodoInput">
         <Input placeholder="添加新任务"
+          className="input"
           value={description}
           onPressEnter={this.addTodo}
           onChange={(e) => this.setState({ description: e.target.value })}

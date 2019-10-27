@@ -5,6 +5,7 @@ import { Menu, Dropdown, Icon } from 'antd';
 import history from '../../config/history'
 import './Home.scss'
 import Todos from '../Todos/Todos'
+import Tomatoes from '../Tomatoes/Tomatoes'
 import { initTodos } from '../../redux/actions/todos'
 import { initTomatoes } from '../../redux/actions/tomatoes'
 
@@ -85,7 +86,8 @@ class Home extends React.Component<any, IIndexState> {
           </Dropdown>
         </header>
         <main>
-          <Todos></Todos>
+          <Tomatoes />
+          <Todos />
           <div></div>
         </main>
       </div>
