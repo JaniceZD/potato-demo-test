@@ -2,6 +2,7 @@ import React from 'react';
 import axios from '../../config/axios'
 import { Button, Input, Icon, Modal } from 'antd'
 import CountDown from './CountDown'
+import './TomatoAction.scss'
 
 interface ITomatoActionProps {
   startTomato: () => void;
@@ -82,12 +83,13 @@ class TomatoAction extends React.Component<ITomatoActionProps, ITomatoActionStat
         html = (
           <div className="inputWrapper">
             <Input
+              className="input"
               value={this.state.description}
               placeholder="你刚刚完成了什么工作?"
               onChange={e => this.setState({ description: e.target.value })}
               onPressEnter={this.onPressEnter}
             />
-            <Icon type="close-circle" onClick={this.showConfirm} />
+            <Icon type="close-circle" className="abort" onClick={this.showConfirm} />
           </div>
         )
       } else if (timeNow - startTime < duration) {
@@ -95,7 +97,7 @@ class TomatoAction extends React.Component<ITomatoActionProps, ITomatoActionStat
         html = (
           <div className="countDownWrapper">
             <CountDown timer={timer} duration={duration} onFinish={this.onFinish} />
-            <Icon type="close-circle" onClick={this.showConfirm} />
+            <Icon type="close-circle" className="abort" onClick={this.showConfirm} />
           </div>
         )
       }

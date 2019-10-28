@@ -1,5 +1,6 @@
 import React from 'react';
 import { format, parseISO } from 'date-fns';
+import './TomatoList.scss'
 
 interface ITomatoListProps {
   finishedTomatoes: any;
@@ -32,7 +33,7 @@ class TomatoList extends React.Component<ITomatoListProps> {
         <div key={d} className="dailyTomatoes">
           <div className="title">
             <span className="dateTime">{format(parseISO(d), 'M月dd日')}</span>
-            <span className="finishedCount">完成了{tomatoes.length}个任务</span>
+            <span className="finishedCount">完成了 {tomatoes.length} 个番茄</span>
           </div>
           {
             tomatoes.map((t: any) => <TomatoItem key={t.id} {...t} />)

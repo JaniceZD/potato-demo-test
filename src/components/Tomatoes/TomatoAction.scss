@@ -1,0 +1,38 @@
+.TomatoAction {
+  margin-bottom: 16px;
+  padding: 0 0 16px;
+  border-bottom: 1px solid #DDD;
+  >.startTomatoButton {
+    width: 100%;
+    border: 1px solid #BBB;
+    text-shadow: 0 1px 0 rgba(255,255,255,.9);
+    color: #666;
+    font-weight: 700;
+    background: #f4f4f4;
+    height: 2.5em;
+    &:hover {
+      border-color: #999;
+    }
+  }
+  >.inputWrapper, >.countDownWrapper{
+    position: relative;
+    >.abort{
+      position: absolute;
+      top: 0;
+      right: -.4em;
+      margin-top: -.4em;
+      background: #fff;
+      color: #9C9C97;
+    }
+  }
+  
+  >.inputWrapper{
+    >.input{
+      height: 2.5em;
+      line-height: 1.8em;
+    }
+    
+  }
+  
+  
+}

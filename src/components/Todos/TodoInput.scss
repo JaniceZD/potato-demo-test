@@ -1,3 +1,6 @@
 .TodoInput {
-  margin-bottom: 14px;
+  margin-bottom: 16px;
+  >.input{
+    height: 2.5em;
+  }  
 }
