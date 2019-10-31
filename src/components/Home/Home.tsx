@@ -6,6 +6,7 @@ import history from '../../config/history'
 import './Home.scss'
 import Todos from '../Todos/Todos'
 import Tomatoes from '../Tomatoes/Tomatoes'
+import Statistics from '../Statistics/Statistics'
 import { initTodos } from '../../redux/actions/todos'
 import { initTomatoes } from '../../redux/actions/tomatoes'
 
@@ -88,8 +89,8 @@ class Home extends React.Component<any, IIndexState> {
         <main>
           <Tomatoes />
           <Todos />
-          <div></div>
         </main>
+        <Statistics />
       </div>
     )
   }
