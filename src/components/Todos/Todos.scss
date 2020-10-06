@@ -3,9 +3,11 @@
   border-radius: 5px;
   border: 1px solid #DDD;
   padding: 1em;
+  height: 50vh;
+  overflow: auto;
   box-shadow: 0 2px 0 rgba(225,225,225,.2);
-  width: calc(50% - 14px);
+  width: calc(50% - 8px);
   > .todoLists {
-    border-bottom: 1px solid #DDD;
+    margin-top: 16px;
   }
 }
