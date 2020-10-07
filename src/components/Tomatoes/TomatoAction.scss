@@ -4,14 +4,17 @@
   border-bottom: 1px solid #DDD;
   >.startTomatoButton {
     width: 100%;
-    border: 1px solid #BBB;
-    text-shadow: 0 1px 0 rgba(255,255,255,.9);
-    color: #666;
+    border: 1px solid #1890ff;
+    text-shadow: 0 -1px 0 rgba(0,0,0,.12);
+    color: #fff;
     font-weight: 700;
-    background: #f4f4f4;
+    background: #1890ff;
     height: 2.5em;
+    box-shadow: 0 2px 0 rgba(0,0,0,.045);
     &:hover {
-      border-color: #999;
+      color: #fff;
+      background-color: #40a9ff;
+      border-color: #40a9ff;
     }
   }
   >.inputWrapper, >.countDownWrapper{
