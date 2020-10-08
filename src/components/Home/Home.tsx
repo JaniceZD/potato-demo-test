@@ -57,12 +57,10 @@ class Home extends React.Component<any, IIndexState> {
             visible: false,
             timer: parseInt(localStorage.getItem("timer") as string)
         };
-        console.log(this.props)
     }
 
     public componentDidMount(): void {
         let count = Number(localStorage.getItem("count"));
-        console.log('count',count);
         if (count === 1) {
             openNotification();
             openNotification1();
@@ -114,14 +112,14 @@ class Home extends React.Component<any, IIndexState> {
     handleOk = () => {
         this.setState({
             ...this.state,
-            visible: false,
+            visible: false
         });
     };
 
     handleCancel = () => {
         this.setState({
             ...this.state,
-            visible: false,
+            visible: false
         });
     };
     showModal = () => {
@@ -136,6 +134,7 @@ class Home extends React.Component<any, IIndexState> {
             ...this.state,
             timer: val
         })
+        console.log("timer: ",this.state.timer)
     };
 
     render() {
@@ -171,7 +170,7 @@ class Home extends React.Component<any, IIndexState> {
                     </Dropdown>
                 </header>
                 <main>
-                    <Tomatoes/>
+                    <Tomatoes timer={this.state.timer}/>
                     <Todos/>
                 </main>
                 <Statistics/>

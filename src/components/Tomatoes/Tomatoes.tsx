@@ -1,23 +1,23 @@
 import React from 'react';
-import { connect } from 'react-redux'
-import { addTomato, updateTomato } from '../../redux/actions/tomatoes'
+import {connect} from 'react-redux'
+import {addTomato, updateTomato} from '../../redux/actions/tomatoes'
 import './Tomatoes.scss'
 import TomatoAction from './TomatoAction'
 import TomatoList from './TomatoList'
 import axios from '../../config/axios'
 import _ from 'lodash'
-import { format, parseISO } from 'date-fns'
+import {format, parseISO} from 'date-fns'
 
 interface ITomatoesProps {
   tomatoes: any[];
   addTomato: (payload: any) => any;
   updateTomato: (payload: any) => any;
+  timer: number;
 }
 
 class Tomatoes extends React.Component<ITomatoesProps> {
   constructor(props: ITomatoesProps) {
-    super(props)
-    console.log(props)
+    super(props);
   }
 
   get unfinishedTomato() {
@@ -26,17 +26,15 @@ class Tomatoes extends React.Component<ITomatoesProps> {
 
   get finishedTomatoes() {
     const finishedTomatoes = this.props.tomatoes.filter((t: any) => t.description && t.ended_at && !t.aborted)
-    const obj = _.groupBy(finishedTomatoes, (tomato) => {
+    return _.groupBy(finishedTomatoes, (tomato) => {
 
       return format(parseISO(tomato.started_at), 'yyyy-MM-d')
     })
-    return obj
   }
 
-  startTomato = async () => {
+  startTomato = async (timer: number) => {
     try {
-      const response = await axios.post('tomatoes', { duration: 1500000 })
-      console.log(response)
+      const response = await axios.post('tomatoes', { duration: (timer * 60 * 1000) });
       this.props.addTomato(response.data.resource)
     } catch (error) {
       throw new Error(error)
@@ -47,7 +45,7 @@ class Tomatoes extends React.Component<ITomatoesProps> {
     return (
       <div className="Tomatoes">
         <TomatoAction
-          startTomato={this.startTomato}
+          startTomato={() => {this.startTomato(this.props.timer)}}
           unfishedTomato={this.unfinishedTomato}
           updateTomato={this.props.updateTomato}
         />
