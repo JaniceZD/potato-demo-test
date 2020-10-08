@@ -1,9 +1,9 @@
 import axios from "axios"
 import history from './history'
 
-const appID = '7wfWsfscoq44dWM2dCcQmdV8'
-const appSecret = 'x8jE2TC8GmbbZ7Hwb8W6vNGw'
-
+const appID = '7wfWsfscoq44dWM2dCcQmdV8';
+const appSecret = 'x8jE2TC8GmbbZ7Hwb8W6vNGw';
+let n = 1;
 const instance = axios.create({
   baseURL: 'https://gp-server.hunger-valley.com/',
   //timeout: 1000,
@@ -29,6 +29,11 @@ instance.interceptors.request.use(function (config) {
 instance.interceptors.response.use(function (response) {
   if (response.headers['x-token']) {
     localStorage.setItem('x-token', response.headers['x-token'])
+    localStorage.setItem("count", n.toString())
+    n += 1
+  }
+  if (!localStorage.getItem("timer")) {
+    localStorage.setItem("timer", "25")
   }
   return response;
 }, function (error) {
