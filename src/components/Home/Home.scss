@@ -1,23 +1,39 @@
 .menu {
-  margin: 10px 0;
+  margin: 5px 0;
   text-align: center;
 }
+
 .Home {
   max-width: 1000px;
   width: 100%;
   margin: 0 auto;
   padding: 0 16px;
+
   > header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 14px 0;
+    padding: 16px 0 12px;
     border-bottom: 1px solid #dddddd;
-    > .dropdown{
+
+    > .logo {
+      font-size: 2rem;
+      font-weight: bold;
+      text-align: center;
+
+      > .logoName {
+        margin-left: 2px;
+      }
+    }
+
+    > .dropdown {
       cursor: pointer;
+      color: #1890ff;
+      font-size: 1rem;
     }
   }
-  > main{
+
+  > main {
     padding: 16px 0;
     display: flex;
     justify-content: space-between;

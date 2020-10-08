@@ -16,6 +16,10 @@ interface IIndexState {
     timer: number | undefined
 }
 
+const Tomato = Icon.createFromIconfontCN({
+    scriptUrl: "//at.alicdn.com/t/font_808628_b6nuh19mmf5.js",
+})
+
 const openNotification = () => {
     notification.open({
         message: '使用小提示',
@@ -160,9 +164,12 @@ class Home extends React.Component<any, IIndexState> {
                                  onChange={(e) => {this.onInputValChange(e)}}/> 分钟
                 </Modal>
                 <header>
-                    <span className="logo">LOGO</span>
-                    <Dropdown className="dropdown" overlay={menu} trigger={['click']} placement="bottomRight">
-                        <span>
+                    <span className="logo">
+                        <Tomato type={"i-Tomato"} className={"icon"} style={{fontSize: 32}}/>
+                        <span className={"logoName"}>番茄土豆闹钟</span>
+                    </span>
+                    <Dropdown className="dropdown" overlay={menu}  placement="bottomRight">
+                        <span onClick={e => e.preventDefault()}>
                             你好，{this.state.user.account} <Icon type="down"/>
                         </span>
                     </Dropdown>
