@@ -1,6 +1,6 @@
 .TodoItem {
   border-bottom: 1px solid #dddddd;
-  padding: .4em .5em;
+  padding: .5em .5em .5em .1em;
   display: flex;
   align-items: center;
   color: #222;
@@ -8,17 +8,16 @@
   &:hover{background: #f9f9f9}
   &.editing{background: #fff3d2}
   &.completed{
+    padding: 0;
     >.text{
       flex: 1;
       text-decoration: line-through;
       color: #a9a9a9;
+      padding: 0 6px;
     }
   }
   > .checkbox {
     padding: 2px 3px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     border-radius: 100%;
   }
   >.editing, >.text{
