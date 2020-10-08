@@ -62,8 +62,6 @@ class Home extends React.Component<any, IIndexState> {
     public componentDidMount(): void {
         let count = Number(localStorage.getItem("count"));
         if (count === 1) {
-            openNotification();
-            openNotification1();
             openNotification2()
         }
     }
