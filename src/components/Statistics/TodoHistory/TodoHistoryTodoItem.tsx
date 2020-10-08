@@ -3,6 +3,7 @@ import axios from '../../../config/axios'
 import dayjs from 'dayjs'
 import { connect } from 'react-redux';
 import { updateTodo } from "../../../redux/actions/todos";
+import "./TodoHistoryTodoItem.scss";
 
 interface ITodoHistoryTodoItemProps {
   todo: any;
