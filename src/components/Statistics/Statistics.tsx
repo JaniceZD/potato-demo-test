@@ -3,7 +3,8 @@ import { connect } from 'react-redux'
 import Polygon from './Polygon'
 import TodoHistory from './TodoHistory/TodoHistory'
 import _ from 'lodash'
-import { format, parseISO } from 'date-fns'
+import { format } from 'date-fns'
+import './Statistics.scss'
 
 interface IStatisticsProps {
   todos: any[];
@@ -25,13 +26,13 @@ class Statistics extends React.Component<IStatisticsProps> {
 
   get dailyTodos() {
     return _.groupBy(this.finishedTodos, (todos) => {
-      return format(parseISO(todos.updated_at), 'yyyy-MM-dd')
+      return format(Date.parse(todos.updated_at), "yyyy-MM-dd")
     })
   }
 
   get dailyTomatoes() {
     return _.groupBy(this.finishedTomatoes, (tomatoes) => {
-      return format(parseISO(tomatoes.ended_at), 'yyyy-MM-dd')
+      return format(Date.parse(tomatoes.ended_at), 'yyyy-MM-dd')
     })
   }
 
@@ -39,13 +40,6 @@ class Statistics extends React.Component<IStatisticsProps> {
     return (
       <div className="Statistics">
         <ul>
-          <li>
-            <div className="title">统计</div>
-            <div className="graph">
-              <span className="title">一周累计</span>
-              <span className="number">0</span>
-            </div>
-          </li>
           <li>
             <div className="title">番茄历史</div>
             <div className="graph">
@@ -75,6 +69,6 @@ const mapStateToProps = (state: any, ownProps: any) => {
     tomatoes: state.tomatoes,
     ...ownProps
   }
-}
+};
 
 export default connect(mapStateToProps)(Statistics);

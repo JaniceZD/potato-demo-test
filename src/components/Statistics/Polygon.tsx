@@ -11,20 +11,24 @@ class Polygon extends React.Component<IPolygonProps> {
     }
 
     points = () => {
-        const dates = Object.keys(this.props.data)
-        let finishedCount = 0
-        const XRange = new Date().getTime() - Date.parse(dates[dates.length - 1])
-        const YRange = dates.reduce((a, b) => this.props.data[b].length > a ? this.props.totalFinishedCount : a, 0)
-        let lastXPoint = 0
-        const points = dates.reduce((a, date) => {
-            const x = (new Date().getTime() - Date.parse(date)) / XRange * 238
-            finishedCount += this.props.data[date].length
-            const y = ((this.props.totalFinishedCount - finishedCount) / YRange) * 59.5
-            lastXPoint = x
-            return a.concat(` ${x},${y}`)
-        }, '0,59.5')
-        return points.concat(` ${lastXPoint},59.5 `)
-    }
+        const dates = Object.keys(this.props.data).sort((a, b) => Date.parse(a) - Date.parse(b));
+        const firstDay = dates[0];
+        if (firstDay) {
+            const range = new Date().getTime() - Date.parse(firstDay);
+            let finishedCount = 0;
+            let finishedY = null;
+            const pointsArr = dates.map(date => {
+                const x = (Date.parse(date) - Date.parse(firstDay)) / range * 240;
+                finishedCount += this.props.data[date].length;
+                const y = (1 - (finishedCount / this.props.totalFinishedCount)) * 60;
+                finishedY = y;
+                return `${x}, ${y}`
+            });
+            return ["0,60", ...pointsArr, `240,${finishedY}`, `240, 60`].join(" ")
+        } else {
+            return "0,60 240,60"
+        }
+    };
 
     render() {
         return (
