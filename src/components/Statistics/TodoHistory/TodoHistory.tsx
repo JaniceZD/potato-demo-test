@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {Tabs, Pagination} from 'antd'
+import {Tabs} from 'antd'
 import dayjs from 'dayjs'
 import _ from 'lodash'
 import {format, parseISO} from 'date-fns'
@@ -37,7 +37,7 @@ class TodoHistory extends React.Component<ITodoHistoryProps> {
     }
 
     get finishedTodoList() {
-        const week = ['周日', '周一', '周二', '周三', '周四', '周五', '周六']
+        const week = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
         return this.finishedDates.map((date: any) => {
             return (
                 <div className="dailyTodos" key={date}>
@@ -63,11 +63,11 @@ class TodoHistory extends React.Component<ITodoHistoryProps> {
     render() {
         const deletedTodoList = this.deletedTodos.map(todo => {
             return (
-                <div className="dailyDelete">
+                <div className="dailyDelete" key={todo.id}>
                     <TodoHistoryTodoItem key={todo.id} todo={todo} itemType="deleted"/>
                 </div>
             )
-        })
+        });
         return (
             <div className="TodoHistory">
                 <Tabs defaultActiveKey="1" type="card">
@@ -90,7 +90,7 @@ class TodoHistory extends React.Component<ITodoHistoryProps> {
 const mapStateToProps = (state: any, ownProps: any) => ({
     todos: state.todos,
     ...ownProps
-})
+});
 
 
 export default connect(mapStateToProps)(TodoHistory)
