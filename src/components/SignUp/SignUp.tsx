@@ -46,7 +46,7 @@ class SignUp extends React.Component<any, ISignUpState> {
     const { account, password, passwordConformation } = this.state;
     return (
       <div className='SignUp'>
-        <h1>番茄闹钟毕设注册</h1>
+        <h1>番茄土豆闹钟注册</h1>
         <Input placeholder="请输入用户名"
           value={account}
           prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
