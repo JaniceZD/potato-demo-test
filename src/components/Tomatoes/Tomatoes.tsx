@@ -39,6 +39,10 @@ class Tomatoes extends React.Component<ITomatoesProps> {
     } catch (error) {
       throw new Error(error)
     }
+  };
+
+  public componentDidMount(): void {
+    this.setState({ spinning: false })
   }
 
   render() {

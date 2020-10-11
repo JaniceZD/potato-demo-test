@@ -21,14 +21,13 @@ class TomatoAction extends React.Component<ITomatoActionProps, ITomatoActionStat
     super(props)
     this.state = {
       description: ''
-    }
-    console.log(props)
+    };
   }
 
   abortTomato = () => {
     this.updateTomato({
       aborted: true
-    })
+    });
     document.title = "番茄土豆"
   }
 

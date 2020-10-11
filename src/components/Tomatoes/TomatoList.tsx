@@ -1,10 +1,17 @@
 import React from 'react';
 import {format} from 'date-fns';
+import { Icon, Spin } from "antd"
 import './TomatoList.scss'
 
 interface ITomatoListProps {
     finishedTomatoes: any;
 }
+
+interface ITomatoListState {
+    spinning: boolean
+}
+
+const antIcon = <Icon type="loading" style={{ fontSize: 24 }} spin/>;
 
 const TomatoItem = (props: any) => {
     return (
@@ -16,15 +23,21 @@ const TomatoItem = (props: any) => {
     )
 };
 
-class TomatoList extends React.Component<ITomatoListProps> {
+class TomatoList extends React.Component<ITomatoListProps, ITomatoListState> {
     constructor(props: ITomatoListProps) {
         super(props);
-        console.log(this.props)
+        this.state = {
+            spinning: true
+        }
     }
 
     get dates() {
         const dates = Object.keys(this.props.finishedTomatoes);  //获取键名
         return dates.sort((a, b) => Date.parse(b) - Date.parse(a)).splice(0, 3)
+    }
+
+    public componentDidMount(): void {
+        this.setState({ spinning: false })
     }
 
     render() {
@@ -44,6 +57,7 @@ class TomatoList extends React.Component<ITomatoListProps> {
         });
         return (
             <div className="TomatoList">
+                <Spin indicator={antIcon} spinning={this.state.spinning}/>
                 {list}
             </div>
         )

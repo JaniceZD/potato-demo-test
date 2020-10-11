@@ -40,7 +40,7 @@ class CountDown extends React.Component<ICountDownProps, IICountDownState> {
 
   get countDown() {
     const min = Math.floor(this.state.countDown / 1000 / 60);
-    const second = Math.floor(((this.state.countDown / 1000) % 60) +18);
+    const second = Math.floor(((this.state.countDown / 1000) % 60) + 21);
     return `${min < 10 ? `0${min}` : min}:${second < 10 ? `0${second}` : second}`
   }
 
