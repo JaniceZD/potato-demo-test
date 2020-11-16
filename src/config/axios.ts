@@ -41,8 +41,10 @@ instance.interceptors.response.use(function (response) {
     }
     return response;
 }, function (error) {
-    if (error.response.status === 401) {
-        history.push('/login')
+    if (error.response === undefined || error.response.status === 401) {
+        if (history.location.pathname === '/') {
+            history.push('/login')
+        }
     }
     return Promise.reject(error);
 });
